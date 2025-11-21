@@ -1,13 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
+@font-face {
+  font-family: "8bit";
+  src: url("../fonts/8bitOperatorPlus8-Bold.ttf") format("truetype"); /* ajusta la ruta según tu CSS */
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0;
   padding: 0;
   background-image: url(..//Imagenes/minecraft-5820118_1920.png);
   background-repeat: repeat;
-  background-size: 70px 70px;
-  font-family: "Press Start 2P", cursive;
+  background-size: 70px 80px;
+  font-family: "8bit", monospace;
   color: #ffffff;
+  font-size: 1.2rem; /* tamaño más grande */
 }
 
 nav {
@@ -39,15 +44,22 @@ nav ul li a {
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   border: 2px solid #1b5e20;
-  font-size: 0.9rem;
+  font-size: 25px;
   transition: all 0.2s;
 }
 
 nav ul li a:hover {
-  background-color: #66bb6a;
+  background-color: #1f6222; /* verde más claro tipo Minecraft */
+  border: 2px solid #1b5e20; /* borde tipo bloque */
+  box-shadow: 2px 2px 0 #233e2a; /* efecto 3D pixelado */
+  transform: translate(-1px, -1px); /* efecto de levantado */
+  text-shadow: 1px 1px 0 #1b5e20; /* sombra del texto tipo bloque */
+  transition: all 0.1s ease; /* transición rápida para efecto pixel */
 }
 
 #songs {
+  position: relative; /* necesario para que z-index funcione */
+  z-index: 10; /* más alto que el zombie */
   line-height: 19px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
@@ -58,7 +70,6 @@ nav ul li a:hover {
   border-radius: 10px;
   box-shadow: 0 0 20px #000;
 }
-
 #songs h1 {
   color: #a5d6a7;
   font-size: 1.8rem;
@@ -90,4 +101,96 @@ footer {
   font-size: 0.8rem;
   border-top: 4px solid #388e3c;
   margin-top: 3rem;
+}
+#zombie {
+  position: absolute; /* sobre el fondo */
+  top: 50%; /* posición vertical inicial */
+  left: 0%; /* posición horizontal inicial */
+  width: 400px; /* tamaño del zombie */
+  z-index: 1; /* debajo de #songs */
+  pointer-events: none; /* no bloquea clicks */
+  transition: left 5s linear, top 5s linear; /* transición suave */
+}
+#portal {
+  top: 400px; /* ajusta la distancia desde el top */
+  left: 1050px;
+  position: absolute; /* se mueve dentro del documento, no fijo */
+  width: 300px; /* tamaño ajustable */
+  z-index: 20; /* encima del fondo pero debajo de algunos elementos si quieres */
+  pointer-events: none; /* no bloquea clicks */
+  animation: flotar 2s infinite alternate; /* efecto de flotación */
+}
+
+/* Animación para que flote suavemente */
+@keyframes flotar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#steve {
+  position: absolute; /* relativo al body o contenedor */
+  top: 1000px; /* ajusta según dónde quieras que aparezca */
+  left: 50px; /* ajusta según dónde quieras que aparezca */
+  width: 300px; /* tamaño de Steve */
+  z-index: 25; /* encima de portal y fondo, debajo de menús si quieres */
+  pointer-events: none; /* no bloquea clics */
+  animation: bailando 1.5s infinite alternate; /* pequeño movimiento */
+}
+
+#zombiePollo {
+  position: fixed; /* se mantiene en pantalla */
+  bottom: 10px; /* altura desde el fondo */
+  left: -150px; /* empieza fuera de la pantalla a la izquierda */
+  width: 100px; /* tamaño ajustable */
+  z-index: 50; /* encima de la mayoría de elementos */
+  pointer-events: none; /* no bloquea clicks */
+  animation: caminar 10s linear infinite; /* animación infinita */
+}
+
+/* Animación de izquierda a derecha */
+@keyframes caminar {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100vw;
+  } /* termina en el borde derecho de la pantalla */
+}
+
+#abejita {
+  position: absolute; /* se mueve dentro del documento */
+  top: 1650px; /* ajusta según donde quieras que aparezca */
+  left: 1150px; /* ajusta según donde quieras que aparezca */
+  width: 100px; /* tamaño de la abejita */
+  z-index: 30; /* encima del fondo, debajo de botones si quieres */
+  pointer-events: none; /* no bloquea clicks */
+  animation: volar 3s ease-in-out infinite alternate;
+}
+
+/* Animación de vuelo suave */
+@keyframes volar {
+  0% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate(20px, -10px) rotate(5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+}
+
+#portalNether {
+  position: absolute; /* se coloca donde quieras dentro del contenido */
+  top: 1650px; /* ajusta según la posición deseada */
+  left: 100px; /* distancia desde la izquierda */
+  width: 120px; /* tamaño del portal */
+  z-index: 10; /* encima de otros elementos */
+  cursor: pointer; /* opcional, si quieres que sea interactivo */
 }

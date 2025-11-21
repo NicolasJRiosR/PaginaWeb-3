@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
 
 body {
+  position: relative;
   margin: 0;
   padding: 0;
   background: #f9f8f4 url(..//Imagenes/fondo.jpeg) repeat;
@@ -24,6 +25,8 @@ nav {
   padding: 1rem;
   text-align: center;
   box-shadow: 5px 5px 0 #000;
+  position: relative; /* para que Mitsuri se pueda posicionar debajo si queremos absoluto dentro del nav */
+  z-index: 2; /* encima del GIF */
 }
 
 nav ul {
@@ -94,4 +97,98 @@ footer {
   border-top: 2px solid #000;
   font-size: 0.9rem;
   box-shadow: 0 -4px 0 #000;
+}
+#mitsuri {
+  position: absolute;
+  left: 20px;
+  width: 120px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#kakashi {
+  position: absolute; /* se posiciona dentro del contenido */
+  top: 510px; /* posición exacta desde el inicio del contenido */
+  left: 1200px; /* desde la izquierda */
+  width: 200px; /* tamaño del GIF */
+  z-index: 1;
+
+  /* Animación sutil */
+  animation: flotar 2s ease-in-out infinite alternate;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(10px); /* solo un pequeño movimiento */
+  }
+}
+#kakashi2 {
+  position: absolute; /* dentro del contenido */
+  top: 700px; /* ajusta según donde quieras que aparezca */
+  left: 200px; /* distancia desde la izquierda */
+  width: 90px; /* tamaño del GIF */
+  z-index: 1;
+
+  /* Animación sutil */
+  animation: flotar2 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes flotar2 {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-5px); /* movimiento sutil */
+  }
+}
+#pelea {
+  position: absolute; /* se posiciona dentro del contenedor */
+  top: 105px; /* ajusta según donde quieras que aparezca */
+  left: 420px; /* distancia desde la izquierda */
+  width: 140px; /* tamaño del GIF */
+  z-index: 10; /* encima de otros elementos */
+}
+
+#sasuke1 {
+  position: absolute;
+  top: 2500px; /* posición desde arriba */
+  left: 150px; /* posición desde la izquierda */
+  width: 200px; /* ajusta tamaño */
+  z-index: 10;
+
+  /* Animación sutil */
+  animation: flotarSasuke1 2s ease-in-out infinite alternate;
+}
+
+#sasuke2 {
+  position: absolute;
+  top: 2000px; /* diferente altura */
+  left: 1250px; /* diferente posición horizontal */
+  width: 120px;
+  z-index: 10;
+
+  /* Animación sutil diferente */
+  animation: flotarSasuke2 2.5s ease-in-out infinite alternate;
+}
+
+/* Animaciones */
+@keyframes flotarSasuke1 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
+@keyframes flotarSasuke2 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
 }

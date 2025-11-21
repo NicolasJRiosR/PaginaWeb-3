@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="..//Css/estiloscancions.css" />
   </head>
   <body>
+    <img
+      id="zombie"
+      src="..//Imagenes/eggmations-eggmations-d9bdee97-3366-47f6-a17d-dbf476657062.gif"
+      alt="Zombie caminando"
+    />
+    <img
+      id="portal"
+      src="..//Imagenes/minecraft.gif"
+      alt="Portal de Minecraft"
+    />
+    <!-- Steve bailando -->
+    <img
+      id="steve"
+      src="..//Imagenes/steve-steve-dance.gif"
+      alt="Steve bailando"
+    />
+    <!-- Zombie en pollo -->
+    <img
+      id="zombiePollo"
+      src="..//Imagenes/minecraft (1).gif"
+      alt="Zombie en pollo"
+    />
+    <!-- Abejita decorativa -->
+    <img id="abejita" src="..//Imagenes/minecraft-bee.gif" alt="Abejita" />
+    <a href="/Paginas/Galaxia.html">
+      <img
+        id="portalNether"
+        src="..//Imagenes/Nether_Portal_(EW).gif"
+        alt="Portal al Nether"
+      />
+    </a>
     <header>
       <nav>
         <ul>
@@ -21,9 +52,11 @@
             <a href="..//Paginas/messages.html">Notas Especiales</a>
           </li>
           <li><a href="..//Paginas/dibujos.html">Dibujos</a></li>
+          <li><a href="..//Paginas/fnaf.html">Celebracion</a></li>
         </ul>
       </nav>
     </header>
+    <!-- Zombie caminando -->
 
     <section id="songs">
       <h1>canciones favoritas 🎶</h1>
@@ -74,5 +107,24 @@
         aveces no puedo decir o dicen mas de lo que quiero <br />TE AMO
       </h4>
     </section>
+    <script>
+      function moverZombie() {
+        // Tamaño total de la página
+        const maxX = document.body.scrollWidth - zombie.width;
+        const maxY = window.innerHeight - zombie.height; // solo altura visible
+
+        // Posiciones aleatorias más “extremas” horizontalmente
+        const randomX = Math.random() * (maxX * 1.2); // multiplicamos por 1.2 para más alcance
+        const randomY = Math.random() * maxY;
+
+        zombie.style.left = randomX + "px";
+        zombie.style.top = randomY + "px";
+
+        const tiempo = 3000 + Math.random() * 3000;
+        setTimeout(moverZombie, tiempo);
+      }
+
+      moverZombie();
+    </script>
   </body>
 </html>

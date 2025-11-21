@@ -1,21 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 .imagenAdentro {
   width: 20%;
 }
+
 .imagen {
   width: 4%;
   padding: 0%;
   margin: 0%;
   text-align: center;
 }
+
 .corazon {
   width: 6%;
   padding: 0%;
   margin: 0%;
 }
+
 p {
   font-size: 20px;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -31,7 +36,7 @@ body {
 
 nav {
   background-color: #2c2c2c;
-  padding: 1rem;
+  padding: 1.3rem 1rem;
   text-align: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
@@ -39,6 +44,7 @@ nav {
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -51,6 +57,7 @@ nav ul li a {
   background-color: #1a1a1a;
   padding: 0.5rem 1rem;
   border-radius: 8px;
+  font-size: 25px;
   font-weight: bold;
   transition: 0.3s;
 }
@@ -71,122 +78,72 @@ nav ul li a:hover {
   margin-bottom: 2rem;
 }
 
+#notasEspeciales {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#notaContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre botones y nota */
+}
+
 .nota {
   background-color: rgba(52, 40, 40, 0.55);
   border-left: 5px solid #261733;
-  margin: 1rem auto;
-  padding: 1rem;
-  max-width: 600px;
+  padding: 2rem;
+  width: 700px; /* ancho fijo */
+  height: 400px; /* alto fijo */
   border-radius: 8px;
+  text-align: center;
   box-shadow: 0 0 10px #4f0f6455;
+  font-size: 22px;
+  overflow-y: auto; /* scroll interno si el contenido es más grande */
 }
 
 .nota h2 {
   color: #ff00d9;
-  margin-bottom: 0.5rem;
-}
-.decoracionRubius img {
-  position: absolute;
-  width: 150px;
-  opacity: 0.8;
-  z-index: 1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform: rotate(var(--rot));
+  margin-bottom: 1rem;
+  font-size: 30px;
 }
 
-.decoracionRubius img:hover {
-  transform: rotate(var(--rot)) scale(1.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.nota p {
+  font-size: 20px;
+  line-height: 1.5;
 }
 
-.decoracionRubius img:nth-child(1) {
-  top: 10px;
-  left: 10px;
-  --rot: -8deg;
+.nota img {
+  max-width: 90%;
+  height: auto;
+  margin: 15px 0;
+  border-radius: 15px;
 }
 
-.decoracionRubius img:nth-child(2) {
-  top: 20px;
-  right: 20px;
-  --rot: 10deg;
+.flecha {
+  display: flex; /* para centrar el contenido */
+  justify-content: center; /* centra horizontalmente */
+  align-items: center; /* centra verticalmente */
+  width: 60px; /* tamaño del cuadrado */
+  height: 60px;
+  font-size: 30px; /* tamaño de la flecha */
+  cursor: pointer;
+  background-color: rgba(
+    255,
+    105,
+    180,
+    0.7
+  ); /* fondo rosado semitransparente */
+  border: 2px solid #ff1493; /* borde más definido */
+  border-radius: 12px; /* bordes redondeados */
+  color: #fff; /* color de la flecha */
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.decoracionRubius img:nth-child(3) {
-  top: 1000px;
-  left: 15px;
-  --rot: -6deg;
-}
-
-.decoracionRubius img:nth-child(4) {
-  top: 1000px;
-  right: 25px;
-  --rot: 12deg;
-}
-
-.decoracionRubius img:nth-child(5) {
-  top: 60%;
-  left: 1px;
-  --rot: 90deg;
-}
-
-.decoracionRubius img:nth-child(6) {
-  top: 50%;
-  right: 1px;
-  --rot: -90deg;
-}
-
-.decoracionRubius img:nth-child(7) {
-  left: 12%;
-  top: 3500px;
-  transform: translateX(-50%) rotate(180deg);
-  --rot: 180deg;
-}
-
-.decoracionRubius img:nth-child(8) {
-  left: 10%;
-  top: 1600px;
-  transform: translateX(-50%) rotate(180deg);
-  --rot: 180deg;
-}
-
-.decoracionRubius img:nth-child(9) {
-  right: 1px;
-  top: 1500px;
-  --rot: 5deg;
-}
-
-.decoracionRubius img:nth-child(10) {
-  top: 2200px;
-  left: 100px;
-  --rot: 5deg;
-}
-
-.decoracionRubius img:nth-child(11) {
-  top: 2900px;
-  left: 100px;
-  --rot: -10deg;
-}
-
-.decoracionRubius img:nth-child(12) {
-  top: 2600px;
-  left: 100px;
-  --rot: 15deg;
-}
-
-.decoracionRubius img:nth-child(13) {
-  top: 2400px;
-  right: 100px;
-  --rot: -15deg;
-}
-
-.decoracionRubius img:nth-child(14) {
-  top: 2000px;
-  right: 100px;
-  --rot: -12deg;
-}
-
-.decoracionRubius img:nth-child(15) {
-  top: 2900px;
-  right: 100px;
-  --rot: 18deg;
+.flecha:hover {
+  background-color: #ff1493; /* cambia el fondo al pasar el cursor */
+  color: #fff; /* flecha permanece blanca */
+  transform: scale(1.1); /* pequeño zoom para animación */
 }

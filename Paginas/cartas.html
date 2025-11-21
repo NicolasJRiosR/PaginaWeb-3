@@ -8,9 +8,12 @@
   <link rel="stylesheet" href="..//Css/cartasestilos.css">
 </head>
 <body>
+  <!-- Mitsuri cayendo -->
+  <img id="mitsuri" src="..//Imagenes/b0c87282f442a2752f08db41905d711d.gif" alt="Mitsuri cayendo">
+
   <nav>
     <ul>
-      <ul>
+  
         <li><a href="..//index.html">Inicio</a></li>
           <li>
             <a
@@ -35,9 +38,14 @@
               >Dibujos</a
             >
           </li>
-      </ul>
+           <li><a href="..//Paginas/fnaf.html">Celebracion</a></li>
     </ul>
   </nav>
+  <img src="/Imagenes/12.gif" alt="Kakashi" id="kakashi">
+  <img id="kakashi2" src="/Imagenes/Kakashipanel2.gif" alt="Kakashi Panel 2">
+  <img id="pelea" src="/Imagenes/1b315c8bd3447fc52f3d0d2858167bbec6db0f36r1-256-192_hq.gif" alt="Pelea">
+  <img id="sasuke1" src="/Imagenes/sasuke1.gif" alt="Sasuke 1">
+  <img id="sasuke2" src="/Imagenes/sasuke2.gif" alt="Sasuke 2">
 
   <section id="letters">
     <h1>Mis Cartas para Ti 💌</h1>
@@ -74,5 +82,38 @@
       <img class="imagen" src="..//Imagenes/carta4.png" width="100%" height="1150px"></img>
     </div>
   </section>
+  <script>
+const mitsuri = document.getElementById('mitsuri');
+const duracion = 30; // duración de la caída en segundos
+
+function animarCaida() {
+  const alturaPagina = document.documentElement.scrollHeight;
+
+  // Reiniciamos la posición arriba sin transición
+  mitsuri.style.transition = 'none';
+  mitsuri.style.top = '80px'; // justo debajo del nav
+
+  // Forzamos reflow para que el navegador aplique el cambio
+  mitsuri.offsetHeight;
+
+  // Aplicamos la transición para que caiga
+  mitsuri.style.transition = `top ${duracion}s linear`;
+  mitsuri.style.top = alturaPagina - mitsuri.offsetHeight + 'px';
+
+  // Cuando termina, reiniciamos la animación
+  mitsuri.addEventListener('transitionend', animarCaida, { once: true });
+}
+
+// Inicia la animación
+window.addEventListener('load', animarCaida);
+
+// Recalcular si se cambia el tamaño de la ventana
+window.addEventListener('resize', () => {
+  mitsuri.style.transition = 'none';
+  mitsuri.style.top = '80px';
+  setTimeout(animarCaida, 10);
+});
+</script>
+
 </body>
 </html>

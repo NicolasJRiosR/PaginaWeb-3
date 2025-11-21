@@ -46,3 +46,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(cambiarImagen, 5000);
 });
+const btnSubir = document.getElementById("btnSubir");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    btnSubir.style.display = "block";
+  } else {
+    btnSubir.style.display = "none";
+  }
+});
+
+btnSubir.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+const frases = [
+  "Eres mi lugar favorito ❤️",
+  "Pienso en ti todos los días 💕",
+  "Gracias por existir ✨",
+  "Me haces muy feliz 🌸",
+  "Siempre estás en mi corazón 💖",
+  "Te quiero más de lo que imaginas 🌙",
+  "Cada momento contigo es especial ⭐",
+  "Eres la persona más bonita de mi mundo 💞",
+  "Eres lo más bonito que me pasó ❤️",
+  "Si supieras cuánto te pienso… 💭✨",
+  "Me encanta tu sonrisa, siempre la recuerdo 😊",
+  "Cada día me gustas más 💕",
+  "Ojalá estuvieras aquí conmigo 🥺💗",
+  "Eres mi paz en medio del caos 🌈",
+  "Eres mi persona favorita en todo el mundo 🌍💖",
+  "Hasta en mis días malos te pienso ☁️💫",
+  "Quisiera abrazarte ahora mismo 🤍",
+  "Gracias por ser tú, por existir 🩷",
+  "Me haces sentir especial sin intentarlo ✨",
+  "Te extraño un poquito… bueno, muchísimo 💘",
+  "Quiero vivir muchos momentos contigo 🌙✨",
+  "Siempre serás mi pensamiento bonito 🌸",
+  "Nunca dudes de cuánto te quiero 💞",
+  "Cuando no estás, todo es diferente 🫶",
+  "Tu voz es mi lugar seguro 🥰",
+  "Mi corazón siempre te busca 💓",
+  "Eres un sueño del que no quiero despertar 🌙💖",
+  "Contigo todo es más bonito 💐",
+  "Me haces feliz incluso desde lejos 🌟",
+  "No sabes lo mucho que significas para mí 💗",
+  "Siempre quiero estar a tu lado 🌈💞",
+  "A veces te pienso… y sonrío sin querer 😊❤️",
+];
+
+let indice = 0;
+const fraseElemento = document.getElementById("fraseFlotante");
+
+// Mostrar la primera frase
+fraseElemento.textContent = frases[indice];
+
+// Cambiar frase cada 4 segundos
+setInterval(() => {
+  indice = (indice + 1) % frases.length;
+  fraseElemento.textContent = frases[indice];
+}, 4000);

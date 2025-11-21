@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador FNF - Nuestro Año</title>
+    <link rel="stylesheet" href="/Css/fnafstilos.css" />
+    <style>
+      /* Estilo FNAF para el botón */
+      #botonClick {
+        padding: 15px 35px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: 2px solid #ff0000;
+        background: linear-gradient(145deg, #1c1c1c, #3a3a3a); /* gris oscuro */
+        color: #ff0000; /* rojo FNAF */
+        cursor: pointer;
+        box-shadow: 0 0 15px #ff0000, 2px 2px 10px rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px 2px black;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      #botonClick:hover {
+        background: linear-gradient(145deg, #3a3a3a, #1c1c1c);
+        box-shadow: 0 0 25px #ff0000, 2px 2px 12px rgba(0, 0, 0, 0.7);
+        transform: scale(1.05);
+      }
+
+      /* Serpentinas funcionando correctamente */
+      .serpentina {
+        position: fixed;
+        width: 10px;
+        height: 20px;
+        opacity: 0.9;
+        top: -30px;
+        pointer-events: none;
+        animation: caerGirarZigzag 4s linear forwards;
+      }
+
+      @keyframes caerGirarZigzag {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+        25% {
+          transform: translateY(25vh) translateX(20px) rotate(90deg);
+        }
+        50% {
+          transform: translateY(50vh) translateX(-20px) rotate(180deg);
+        }
+        75% {
+          transform: translateY(75vh) translateX(20px) rotate(270deg);
+        }
+        100% {
+          transform: translateY(100vh) translateX(0) rotate(360deg);
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="..//index.html">Inicio</a></li>
+          <li>
+            <a href="..//Paginas/canciones.html">Canciones</a>
+          </li>
+          <li>
+            <a href="..//Paginas/cartas.html">Mis cartas</a>
+          </li>
+          <li>
+            <a href="..//Paginas/messages.html">Notas Especiales</a>
+          </li>
+          <li><a href="..//Paginas/dibujos.html">Dibujos</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>¡Feliz Aniversario Amor!</h1>
+    <div id="contador">0 días</div>
+    <div class="mensaje">
+      Sobrevivimos un año juntos, y quiero sobrevivir mil más a tu lado. Te amo
+    </div>
+
+    <img
+      class="personaje"
+      src="/Imagenes/fnaf-gangnam-style.gif"
+      alt="Boyfriend FNF"
+    />
+
+    <div class="foxy-container">
+      <img class="foxy" src="/Imagenes/fnaf-foxy.gif" alt="Foxy corriendo" />
+    </div>
+
+    <!-- Botón para iniciar la fiesta -->
+    <button id="botonClick">¡Clickéame!</button>
+
+    <!-- Audios -->
+    <audio
+      id="audioIntro"
+      src="/Musica/Efecto de Sonido de FNAF NIÑOS FELICES.mp3"
+    ></audio>
+    <audio
+      id="musicaFNF"
+      src="/Musica/Fnaf 1 Foxy sing dum dum fnaf 1 sound effect.mp3"
+      loop
+    ></audio>
+
+    <script>
+      // Contador con hora fija en Colombia (UTC-5)
+      const fechaInicio = new Date("2024-11-24T00:00:00-05:00"); // Hora de Colombia
+      const contadorElemento = document.getElementById("contador");
+
+      function actualizarContador() {
+        const ahora = new Date();
+
+        // Convertir la fecha actual a hora de Colombia
+        const ahoraUTC = new Date(
+          ahora.getTime() + ahora.getTimezoneOffset() * 60000
+        ); // Hora en UTC
+        const ahoraCol = new Date(ahoraUTC.getTime() - 5 * 60 * 60 * 1000); // UTC-5 para Colombia
+
+        const diferencia = ahoraCol - fechaInicio;
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+        const segundos = Math.floor((diferencia / 1000) % 60);
+
+        contadorElemento.textContent = `${dias} días, ${horas}h ${minutos}m ${segundos}s juntos`;
+      }
+
+      actualizarContador();
+      setInterval(actualizarContador, 1000); // Actualiza cada segundo
+
+      // Audio de Foxy con volumen bajo
+      const musicaFNF = document.getElementById("musicaFNF");
+      musicaFNF.volume = 0.3;
+
+      // Reproducir Foxy al poner el mouse encima
+      document.body.addEventListener("mouseenter", () => {
+        musicaFNF
+          .play()
+          .catch(() => console.log("No se pudo reproducir el audio de Foxy"));
+      });
+
+      // Botón para iniciar serpentinas
+      const botonClick = document.getElementById("botonClick");
+      const audioIntro = document.getElementById("audioIntro");
+
+      botonClick.addEventListener("click", () => {
+        // Reproducir audio de intro
+        audioIntro.play().catch(() => console.log("Autoplay bloqueado"));
+
+        // Crear serpentinas
+        for (let i = 0; i < 70; i++) {
+          const serpentina = document.createElement("div");
+          serpentina.classList.add("serpentina");
+
+          // Tamaño aleatorio
+          const width = 5 + Math.random() * 15;
+          const height = 15 + Math.random() * 25;
+          serpentina.style.width = width + "px";
+          serpentina.style.height = height + "px";
+
+          // Posición horizontal aleatoria
+          serpentina.style.left = Math.random() * window.innerWidth + "px";
+
+          // Color aleatorio
+          serpentina.style.backgroundColor = `hsl(${
+            Math.random() * 360
+          }, 90%, 60%)`;
+
+          // Animación aleatoria
+          const duracion = 2 + Math.random() * 3;
+          const retraso = Math.random() * 2;
+          serpentina.style.animationDuration = `${duracion}s`;
+          serpentina.style.animationDelay = `${retraso}s`;
+
+          document.body.appendChild(serpentina);
+
+          serpentina.addEventListener("animationend", () =>
+            serpentina.remove()
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
